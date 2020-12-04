@@ -3,7 +3,7 @@ import { Card, CardColumns, Button , ListGroup, ListGroupItem, Container, Row, C
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
-
+//sample data set
 var stats = {
   
   firstName: "",
@@ -16,14 +16,14 @@ var stats = {
     this.email = m;
   }
 }
-
+//function that takes changes made in the input field and assigns it to profile value
 function UpdateEmail(props){
   const emailInput = React.createRef();
   const onSubmitHandler = (parameter) => {
      
     parameter.preventDefault();
     props.setEmail(emailInput.current.value)
-    var temp = props.person;
+    var temp = props.person; //creating a temp object to set use state with new email
     temp.email = emailInput.current.value;
     props.setPerson(temp)
   };
@@ -58,7 +58,7 @@ function UpdateEmail(props){
   );
   
 }
-
+//fetches user data from api and assigns each value to the card
 function Profile(props){
   useEffect(() => {
     let request = async () =>{
@@ -154,7 +154,7 @@ function App(props) {
       <div className = "App-header"> {props.title} </div>
       <Profile email = {email} setEmail = {setEmail} loading = {loading} setLoading = {setLoading} person = {person} setPerson = {setPerson}/>
       <UpdateEmail email = {email} setEmail = {setEmail} person = {person} setPerson = {setPerson}/>
-      <Patch email = {email}/>
+      
     </div>
   );
 }
